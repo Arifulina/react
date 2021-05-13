@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./css/index.css";
+
+import Header from "./components/Header";
+import Main from "./components/Main/Main";
+import Footer from "./components/Footer";
+import ArrowTop from "./components/ArrowTop";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Header />
+    <Main />
+    <Footer />
+    <ArrowTop />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+document.querySelector(".ArrowTop").addEventListener("click", () => {
+  window.scrollTo(0, 0);
+});
+
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 300) {
+    document.querySelector(".ArrowTop").classList.add("animate__zoomIn");
+    document.querySelector(".ArrowTop").classList.remove("hidden");
+  } else {
+    document.querySelector(".ArrowTop").classList.remove("animate__zoomIn");
+    document.querySelector(".ArrowTop").classList.add("hidden");
+  }
+});
