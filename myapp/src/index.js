@@ -30,3 +30,22 @@ window.addEventListener("scroll", () => {
     document.querySelector(".ArrowTop").classList.add("hidden");
   }
 });
+
+document.getElementById("categoryList").addEventListener("input", () => {
+  const catList = document.getElementById("categoryList");
+  showCards(catList.value);
+});
+
+function showCards(catId) {
+  for (let card of document.querySelectorAll(".card")) {
+    if (catId === "all") {
+      card.classList.remove("hidden");
+    } else {
+      if (catId === card.dataset.category) {
+        card.classList.remove("hidden");
+      } else {
+        card.classList.add("hidden");
+      }
+    }
+  }
+}
